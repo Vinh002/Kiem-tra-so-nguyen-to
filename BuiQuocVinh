@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+
+/* Hàm kiểm tra một số có phải là số nguyên tố không */
+bool isPrime(int number) {
+    /* Số nhỏ hơn 2 không phải là số nguyên tố */
+    if (number < 2) return false;
+
+    /*
+     * Kiểm tra các số từ 2 đến căn bậc hai của số đó
+     * Nếu có bất kỳ số nào chia hết, thì số đó không phải là số nguyên tố 
+     */
+    for (int i = 2; i <= sqrt(number); ++i) {
+        if (number % i == 0) {
+            /* Không phải là số nguyên tố */
+            return false; 
+        }
+    }
+    /* Là số nguyên tố */
+    return true; 
+}
+
+int main() {
+    int limit;
+    
+    /* Yêu cầu người dùng nhập giới hạn trên để tìm số nguyên tố */
+    std::cout << "Nhập giới hạn trên: ";
+    std::cin >> limit;
+
+    std::cout << "Các số nguyên tố từ 2 đến " << limit << " là:\n";
+
+    /* Kiểm tra các số từ 2 đến giới hạn trên và kiểm tra xem chúng có phải là số nguyên tố không */
+    for (int num = 2; num <= limit; ++num) {
+        if (isPrime(num)) {
+            std::cout << num << " "; 
+        }
+    }
+
+    std::cout << std::endl;
+    return 0; 
+}
